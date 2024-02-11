@@ -32,9 +32,11 @@ public class PlayerRanking {
     @Override
     public String toString() {
         List<Player> rankingAtual = getRanking();
-        String rankingList = "Ranking dos melhores jogadores:\n";
-        for (int i = 0; i < rankingAtual.size(); i++) {
-            rankingList += (i + 1) + ". " + rankingAtual.get(i).toRanking()+"\n";
+        int tamanhoLista = Math.min(rankingAtual.size(),10);
+
+        String rankingList = "Top 10 jogadores:\n";
+        for (int i = 0; i < tamanhoLista; i++) {
+            rankingList +=  rankingAtual.get(i).getName()+ " - "+(i + 1)+"\n";
         }
         return rankingList;
     }

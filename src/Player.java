@@ -43,7 +43,9 @@ public class Player {
     /**
      * Exibe o nome e pontuação do jogador
      * @return texto para exibição de nome e pontuação
+     * @deprecated será removida na proxima versão caso não seja mais necessária
      */
+    @Deprecated
     public String toRanking(){ return name + " - Pontuação: " + score; }
 
     /**
