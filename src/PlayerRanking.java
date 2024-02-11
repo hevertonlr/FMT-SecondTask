@@ -25,6 +25,10 @@ public class PlayerRanking {
         return playerList;
     }
 
+    /**
+     * Exibe as informações do ranking de jogadores
+     * @return texto com informações do ranking de jogadores
+     */
     @Override
     public String toString() {
         List<Player> rankingAtual = getRanking();
