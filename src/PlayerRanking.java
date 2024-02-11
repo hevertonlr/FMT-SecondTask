@@ -27,9 +27,10 @@ public class PlayerRanking {
 
     @Override
     public String toString() {
+        List<Player> rankingAtual = getRanking();
         String rankingList = "Ranking dos melhores jogadores:\n";
-        for (int i = 0; i < playerList.size(); i++) {
-            rankingList += (i + 1) + ". " + playerList.get(i).toRanking()+"\n";
+        for (int i = 0; i < rankingAtual.size(); i++) {
+            rankingList += (i + 1) + ". " + rankingAtual.get(i).toRanking()+"\n";
         }
         return rankingList;
     }
