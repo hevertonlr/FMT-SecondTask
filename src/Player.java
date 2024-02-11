@@ -41,6 +41,12 @@ public class Player {
     public void addAttempt() { this.attempts++; }
 
     /**
+     * Exibe o nome e pontuação do jogador
+     * @return texto para exibição de nome e pontuação
+     */
+    public String toRanking(){ return name + " - Pontuação: " + score; }
+
+    /**
      * Exibe as informações do Jogador
      *
      * @return texto com informações do Jogador
