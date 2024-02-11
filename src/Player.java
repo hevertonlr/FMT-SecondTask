@@ -14,11 +14,11 @@ public class Player {
      * @param score pontuação do jogador
      * @param attempts tentativas do jogador
      */
-    public Player(String name, int age, int score, int attempts) {
+    public Player(String name, int age) {
         this.name = name;
         this.age = age;
-        this.score = score;
-        this.attempts = attempts;
+        this.score = 0;
+        this.attempts = 0;
     }
 
     /**
@@ -39,6 +39,8 @@ public class Player {
      * Adiciona Tentativa (+1)
      */
     public void addAttempt() { this.attempts++; }
+
+
 
     /**
      * Exibe o nome e pontuação do jogador
