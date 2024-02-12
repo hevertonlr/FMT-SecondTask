@@ -115,7 +115,7 @@ public class Game {
      */
     private static String readAndValidatePlayerName(List<Player> players) {
         boolean isValid = true;
-        String finalName = "";
+        String finalName;
         do {
             System.out.println((isValid
                     ? "Digite o nome do jogador "
