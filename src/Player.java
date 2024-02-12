@@ -9,10 +9,9 @@ public class Player {
 
     /**
      * Construtor da classe Jogador
+     *
      * @param name nome do jogador
-     * @param age idade do jogador
-     * @param score pontuação do jogador
-     * @param attempts tentativas do jogador
+     * @param age  idade do jogador
      */
     public Player(String name, int age) {
         this.name = name;
@@ -26,29 +25,37 @@ public class Player {
      *
      * @param add valor de pontos adicionados
      */
-    public void upScore(int add) { this.score += add; }
+    public void upScore(int add) {
+        this.score += add;
+    }
 
     /**
      * Remove pontos
      *
      * @param remove valor de pontos removidos
      */
-    public void downScore(int remove) { this.score -= remove; }
+    public void downScore(int remove) {
+        this.score -= remove;
+    }
 
     /**
      * Adiciona Tentativa (+1)
      */
-    public void addAttempt() { this.attempts++; }
-
+    public void addAttempt() {
+        this.attempts++;
+    }
 
 
     /**
      * Exibe o nome e pontuação do jogador
+     *
      * @return texto para exibição de nome e pontuação
      * @deprecated será removida na proxima versão caso não seja mais necessária
      */
     @Deprecated
-    public String toRanking(){ return name + " - Pontuação: " + score; }
+    public String toRanking() {
+        return name + " - Pontuação: " + score;
+    }
 
     /**
      * Exibe as informações do Jogador
@@ -57,25 +64,36 @@ public class Player {
      */
     @Override
     public String toString() {
-        return "Jogador { \n" +
-                "   nome=" + name + ",\n" +
-                "   idade=" + age + ",\n" +
-                "   pontuacao=" + score + ",\n" +
-                "   numeroTentativas=" + attempts + "\n" +
-                '}';
-
+        return name + " - " + age + " anos (" + score + " pontos - " + attempts + " tentativas)";
     }
 
     //region Getters and Setters
-    public String getName(){ return name; }
-    public void setName(String name){ this.name = name; }
+    public String getName() {
+        return name;
+    }
 
-    public int getAge(){ return age; }
-    public void setAge(int age) { this.age = age;}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public int getScore() { return score; }
-    public int getAttempts() { return attempts; }
+    public int getAge() {
+        return age;
+    }
 
-    public void setAttempts(int attempts) { this.attempts = attempts; }
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public int getAttempts() {
+        return attempts;
+    }
+
+    public void setAttempts(int attempts) {
+        this.attempts = attempts;
+    }
     //endregion
 }
