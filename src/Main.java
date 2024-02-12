@@ -4,7 +4,43 @@ public class Main {
     public static void main(String[] args) {
         try {
             Game game = new Game();
-            gameModes(game);
+
+            Scanner scanner = new Scanner(System.in);
+
+            while (true) {
+                System.out.println("\nEscolha uma opção:");
+                System.out.println("1 - Ver ranking completo");
+                System.out.println("2 - Ver os 10 melhores");
+                System.out.println("3 - Jogar novamente");
+                System.out.println("4 - Encerrar o jogo");
+                System.out.print("Opção escolhida: ");
+
+
+                while (!scanner.hasNextInt()) {
+                    System.out.println("Entrada inválida. Tente novamente");
+                    scanner.next();
+                }
+                int option = scanner.nextInt();
+                scanner.nextLine();
+
+
+                switch (option) {
+                    case 1:
+                        System.out.println(game.getRanking());
+                        break;
+                    case 2:
+                        game.getRanking().getTopTen();
+                        break;
+                    case 3:
+                        gameModes(game);
+                        break;
+                    case 4:
+                        System.out.println("Encerrando o jogo. Até mais!");
+                        return;
+                    default:
+                        System.out.println("Opção inválida. Escolha novamente.");
+                }
+            }
         } catch (Exception e) {
             System.out.println("Finalizando o jogo...");
         }
@@ -27,12 +63,12 @@ public class Main {
                 System.out.println("Entrada inválida. Tente novamente");
                 scanner.next();
             }
-            int modo = scanner.nextInt();
+            int mode = scanner.nextInt();
             scanner.nextLine();
 
-            if (modo == 1) {
+            if (mode == 1) {
                 rockPaperScissors(game);
-            } else if (modo == 2) {
+            } else if (mode == 2) {
                 pickANumber(game);
             } else {
                 System.out.println("Modo inválido. Escolha 1 ou 2.");

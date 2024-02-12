@@ -30,6 +30,9 @@ public class Game {
     public void addPlayerToRanking() {
         this.ranking.addPlayer(this.currentPlayer);
     }
+    public PlayerRanking getRanking(){
+        return this.ranking;
+    }
     //endregion
 
     /**
