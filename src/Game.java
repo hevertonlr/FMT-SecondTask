@@ -45,7 +45,7 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         String playerMove = scanner.nextLine().toLowerCase();
 
-        mathResults(playerMove);
+        matchRockPaperScissorsResults(playerMove);
 
         System.out.println("Pontuação atual: " + currentPlayer.getScore());
         setBestPlayer();
@@ -57,11 +57,37 @@ public class Game {
     }
 
     /**
-     * Verifica o resultado do jogo
+     * Inicializa o jogo "Adivinhe o Número"
+     *
+     * @param setNewPlayer iniciar um novo jogador ou não
+     * @param maxRange     número máximo para faixa de números possíveis
+     */
+    public void play(boolean setNewPlayer, int maxRange) {
+        if (setNewPlayer)
+            newPlayer();
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite um número entre 0 e " + maxRange + ": ");
+        int playerNumber = scanner.nextInt();
+        scanner.nextLine();
+
+        matchPickANumber(playerNumber, maxRange);
+
+        System.out.println("Pontuação atual: " + currentPlayer.getScore());
+        setBestPlayer();
+        playTimes++;
+        System.out.print("Deseja jogar novamente? (s/n): ");
+        String answer = scanner.nextLine().toLowerCase();
+        if (answer.equals("s")) play(false, maxRange);
+    }
+
+    /**
+     * Verifica o resultado do jogo "Pedra, Papel e Tesoura"
      *
      * @param playerMove escolha do jogador
      */
-    private void mathResults(String playerMove) {
+    private void matchRockPaperScissorsResults(String playerMove) {
         String[] options = {"pedra", "papel", "tesoura"};
         String oppositeMove = options[(int) (Math.random() * options.length)];
         System.out.println("Adversário escolheu: " + oppositeMove);
@@ -75,6 +101,29 @@ public class Game {
             currentPlayer.upScore(1);
         } else {
             System.out.println("Você perdeu!");
+        }
+        currentPlayer.addAttempt();
+    }
+
+    /**
+     * Verifica o resultado do jogo "Adivinhe o Número"
+     *
+     * @param playerNumber número escolhido pelo jogador
+     * @param maxRange     número máximo de possíbilidade de escolha
+     */
+    private void matchPickANumber(int playerNumber, int maxRange) {
+        if (playerNumber < 0 || playerNumber > maxRange) {
+            System.out.println("Escolha inválida. O número deve estar entre 0 e " + maxRange + ".");
+            return;
+        }
+        boolean matchNumber = (int) (Math.random() * (maxRange + 1)) == playerNumber;
+
+        if (matchNumber) {
+            System.out.println("Você acertou! Ganhou 1 ponto.");
+            currentPlayer.upScore(1);
+        } else {
+            System.out.println("Você errou! Perdeu 1 ponto.");
+            currentPlayer.downScore(1);
         }
         currentPlayer.addAttempt();
     }
@@ -148,9 +197,16 @@ public class Game {
      * Adiciona novo Jogador
      */
     private void newPlayer() {
-        Player player = readPlayer();
-        if (player == null) return;
-        System.out.println("Jogador criado: " + player.getName());
-        setCurrentPlayer(player);
+        try {
+            Player player = readPlayer();
+            if (player == null)
+                throw new Exception();
+
+            System.out.println("Jogador criado: " + player.getName());
+            setCurrentPlayer(player);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
